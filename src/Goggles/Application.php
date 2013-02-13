@@ -30,7 +30,7 @@ class Application extends ConsoleApplication
      */
     public function getLongVersion()
     {
-        return "<info>{$this->getName()}</info>";
+        return "<info>{$this->getName()}</info> - search composer packages";
     }
 }
 
