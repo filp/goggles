@@ -10,6 +10,7 @@ namespace Goggles;
 use Goggles\Provider\ProviderInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Application as ConsoleApplication;
+use RuntimeException;
 
 /**
  * Goggles\Application
@@ -57,9 +58,29 @@ class Application extends ConsoleApplication
      * @param  string[] $searchPaths
      * @return Goggles\Application
      */
-    public function setConfigSearchPaths(array $paths)
+    public function setConfigPaths(array $paths)
     {
         $this->configSearchPaths = $paths;
+    }
+
+    /**
+     * Search for configuration files in registered paths, and
+     * merge them right-to-left into a single configuration.
+     * @return array
+     */
+    protected function loadConfigurationFiles()
+    {
+        $config = array();
+        foreach($this->configSearchPaths as $filePath) {
+            if(is_file($filePath)) {
+                $fileContents = file_get_contents($filePath);
+                $config = array_merge_recursive(
+                    $config, json_decode($fileContents, true)
+                );
+            }
+        }
+
+        return $config;
     }
 
     /**
@@ -88,6 +109,7 @@ class Application extends ConsoleApplication
      */
     public function run()
     {
+        $config = $this->loadConfigurationFiles();
         parent::run();
     }
 }

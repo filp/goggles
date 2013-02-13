@@ -19,11 +19,15 @@ $app->addCommands(array(
     new ShowCommand
 ));
 
-// Set locations to be searched for a .goggles file:
-$searchPaths = array('.');
+// Set configuration file locations:
+$searchPaths = array(
+    __DIR__ . '/../goggles.json', // Base configuration file
+    getcwd() . '/.goggles'        // .goggles file in CWD
+);
 if(isset($_SERVER['HOME'])) {
-    array_unshift($searchPaths, $_SERVER['HOME']);
+    // .goggles file in $HOME
+    array_unshift($searchPaths, $_SERVER['HOME'] . '/.goggles');
 }
-$app->setConfigSearchPaths($searchPaths);
+$app->setConfigPaths($searchPaths);
 
 $app->run();
