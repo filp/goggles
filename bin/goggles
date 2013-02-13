@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Goggles : search for composer packages from the terminal
+ * @author  Filipe Dobreira <http://github.com/filp>
+ * @package filp/goggles
+ */
+require __DIR__ . '/../vendor/autoload.php';
