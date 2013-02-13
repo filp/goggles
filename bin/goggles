@@ -6,3 +6,10 @@
  * @package filp/goggles
  */
 require __DIR__ . '/../vendor/autoload.php';
+
+use Goggles\Application;
+use Goggles\Command\FindCommand;
+
+$app = new Application;
+$app->add(new FindCommand);
+$app->run();
