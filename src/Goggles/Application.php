@@ -40,6 +40,15 @@ class Application extends ConsoleApplication
     }
 
     /**
+     * Returns an array of registered providers.
+     * @return Goggles\Provider\ProviderInterface[]
+     */
+    public function getProviders()
+    {
+        return $this->providers;
+    }
+
+    /**
      * Sets an array of paths that will be searched, in order
      * for a .goggles file. The file contents will be merged
      * right-to-left, as they are found.

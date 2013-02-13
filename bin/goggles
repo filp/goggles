@@ -9,12 +9,14 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Goggles\Application;
 use Goggles\Command\FindCommand;
+use Goggles\Command\ShowCommand;
 
 $app = new Application;
 
 // Register commands:
 $app->addCommands(array(
-    new FindCommand
+    new FindCommand,
+    new ShowCommand
 ));
 
 // Set locations to be searched for a .goggles file:
