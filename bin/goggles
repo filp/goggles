@@ -11,5 +11,17 @@ use Goggles\Application;
 use Goggles\Command\FindCommand;
 
 $app = new Application;
-$app->add(new FindCommand);
+
+// Register commands:
+$app->addCommands(array(
+    new FindCommand
+));
+
+// Set locations to be searched for a .goggles file:
+$searchPaths = array('.');
+if(isset($_SERVER['HOME'])) {
+    array_unshift($searchPaths, $_SERVER['HOME']);
+}
+$app->setConfigSearchPaths($searchPaths);
+
 $app->run();
