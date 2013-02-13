@@ -6,6 +6,8 @@
  */
 
 namespace Goggles;
+
+use Goggles\Provider\ProviderInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Application as ConsoleApplication;
 

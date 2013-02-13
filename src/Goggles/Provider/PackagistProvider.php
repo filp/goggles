@@ -7,7 +7,7 @@
 
 namespace Goggles\Provider;
 use Goggles\Provider\ProviderInterface;
-use Goggles\Result\Collection;
+use Goggles\Result\ResultCollection;
 
 /**
  * Goggles\Provider\PackagistProvider
@@ -27,7 +27,7 @@ class PackagistProvider implements ProviderInterface
      * @param  string $query
      * @param  Goggles\Result\ResultCollection $results
      */
-    public function search($query)
+    public function search($query, ResultCollection $results)
     {
 
     }
